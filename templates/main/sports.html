@@ -1,0 +1,62 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+{% block title %}
+Виды спорта
+{% endblock %}
+
+{% block content %}
+
+
+<div class = "container">
+    <h2 class = "mt-5">ВИДЫ СПОРТА</h2>
+</div>
+
+
+
+
+
+<style>
+    .card-sports {
+        transition: transform 0.2s; /* Анимация на 0.2 секунды */
+    }
+    .card-sports:hover {
+        transform: scale(1.02); /* Сдвиг вверх при наведении */
+    }
+    .card-sports img {
+        height: 220px;
+        width: 100%;
+        object-fit: cover; /* Масштабирование изображения */
+    }
+    .card-sports-body {
+        text-align: left; /* Текст по левой стороне */
+    }
+    .card-sports-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    }
+    .card-sports-text {
+       color: #333;
+    }
+</style>
+</head>
+<body>
+<div class="container my-5">
+<div class="row justify-content-center">
+    {% for sport in sports %}
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card-sports h-100">
+            <img src="{% if sport.image %}{{ sport.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" class="card-sports-img-top" alt="{{ sport.name }}">
+            
+            <div class="card-sports-body">
+                <h5 class="card-sports-title">{{sport.name}}</h5>
+                <p class="card-sports-text">{{sport.description}}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+</div>
+
+
+{% endblock %}

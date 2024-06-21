@@ -1,0 +1,193 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+{% block title %}
+Объекты спорта
+{% endblock %}
+
+{% block content %}
+
+
+<div class = "container">
+    <h2 class = "mt-5">ОБЪЕКТЫ СПОРТА</h2>
+</div>
+
+
+
+
+
+
+<style>
+
+    body {
+      position: relative;
+      height: 100%;
+    }
+
+    body {
+      background: #fff;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+    @media (min-width: 430px) and (max-width: 768px) {
+        swiper-container {
+            width: 100%;
+            height: 155px;
+    }
+    
+}
+@media (min-width: 769px) and (max-width: 1200px){
+        swiper-container {
+            width: 100%;
+            height: 282px;
+    }
+        
+}
+    @media (min-width: 1200px) and (max-width: 1440px) {
+        swiper-container {
+            width: 1200px;
+            height: 338px;
+            
+    }
+}
+@media (min-width: 1440px) and (max-width: 1700px) {
+        swiper-container {
+            width: 1200px;
+            height: 400px;
+            
+    }
+}
+@media (min-width: 1700px) and (max-width: 1920px) {
+        swiper-container {
+            width: 1200px;
+            height: 450px;
+            
+    }
+}
+@media (min-width: 1920px)  {
+        swiper-container {
+            width: 1200px;
+            height: 450px;
+            
+    }
+}
+
+
+    swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+
+    .slide-objects-content {
+        position: absolute;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.1); /* Полупрозрачный фон */
+        color: white;
+        padding: 10px;
+        width: 100%;
+        text-align: left;
+    }
+
+    .slide-objects-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .slide-objects-description {
+        font-size: 14px;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+
+  </style>
+</head>
+
+<body>
+
+  <swiper-container class="mySwiper mt-5" pagination="true" pagination-clickable="false" slides-per-view="2" 
+    space-between="30" free-mode="true">
+    <swiper-slide><img src="{% static 'img/sport4.jpg' %}"/>
+        <div class="slide-objects-content">
+            <div class="slide-objects-title">Площадка для игры в теннис и бскетбол</div>
+            <div class="slide-objects-description">Пойменная, 2А</div>
+            
+        </div>
+    </swiper-slide>
+    <swiper-slide><img src="{% static 'img/sport1.jpg' %}"/>
+        <div class="slide-objects-content">
+            <div class="slide-objects-title">Акватория</div>
+            <div class="slide-objects-description">Пойменная, 2А</div>
+        </div>
+    </swiper-slide>
+    <swiper-slide><img src="{% static 'img/sport2.jpg' %}"/>
+        <div class="slide-objects-content">
+            <div class="slide-objects-title">Беговая дорожка/велодорожка</div>
+            <div class="slide-objects-description">Пойменная, 2А</div>
+        </div>
+    </swiper-slide>
+    <swiper-slide><img src="{% static 'img/sport5.jpg' %}"/>
+        <div class="slide-objects-content">
+            <div class="slide-objects-title">Площадка для игры в футбол 8X8</div>
+            <div class="slide-objects-description">Пойменная, 2А</div>
+        </div>
+    </swiper-slide>
+    <swiper-slide><img src="{% static 'img/sport3.jpg' %}"/>
+        <div class="slide-objects-content">
+            <div class="slide-objects-title">Площадка для спортивно-массовых мероприятий</div>
+            <div class="slide-objects-description">Пойменная, 2А</div>
+        </div>
+    </swiper-slide>
+    <swiper-slide><img src="{% static 'img/sport6.jpg' %}"/>
+        <div class="slide-objects-content">
+            <div class="slide-objects-title">Комплекс трасс для занятий велоспортом BMX</div>
+            <div class="slide-objects-description">Пойменная, 2А</div>
+        </div>
+    </swiper-slide>
+    <swiper-slide><img src="{% static 'img/sport7.jpg' %}"/>
+        <div class="slide-objects-content">
+            <div class="slide-objects-title">Комплекс трасс для занятий велоспортом MTB</div>
+            <div class="slide-objects-description">Пойменная, 2А</div>
+        </div>
+    </swiper-slide>
+    <swiper-slide><img src="{% static 'img/sport8.jpg' %}"/>
+        <div class="slide-objects-content">
+            <div class="slide-objects-title">Площадка для игры в футбол 11X11</div>
+            <div class="slide-objects-description">Пойменная, 2А</div>
+        </div>
+    </swiper-slide>
+    <swiper-slide><img src="{% static 'img/sport10.jpg' %}"/>
+        <div class="slide-objects-content">
+            <div class="slide-objects-title">Площадка для игры в пляжный волейбол</div>
+            <div class="slide-objects-description">Пойменная, 2А</div>
+        </div>
+    </swiper-slide>
+    <swiper-slide><img src="{% static 'img/sport11.jpg' %}"/>
+        <div class="slide-objects-content">
+            <div class="slide-objects-title">Спортивные трибуны</div>
+            <div class="slide-objects-description">Пойменная, 2А</div>
+        </div>
+    </swiper-slide>
+  </swiper-container>
+
+
+{% endblock %}

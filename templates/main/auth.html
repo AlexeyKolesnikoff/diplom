@@ -1,0 +1,98 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %}
+Авторизация
+{% endblock %}
+
+{% block content %}
+<style>
+    .login {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+    }
+
+    .login-form {
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+        text-align: center; /* Центрирование содержимого формы */
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px; /* Отступ снизу для заголовка */
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px; /* Меньший отступ между полями формы */
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: #042750;
+    }
+
+    .btn {
+        background-color: #042750;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        display: block;
+        margin: 0 auto 20px auto; /* Центрирование кнопки и отступ снизу */
+    }
+
+    .btn:hover {
+        background-color: #619cd8;
+    }
+
+    .link-text {
+        text-align: center;
+        font-size: 12px;
+        color: #042750;
+        margin-top: 10px; /* Отступ сверху для текста ссылки */
+    }
+
+    .link-text a {
+        color: #042750;
+        text-decoration: none;
+    }
+
+    .link-text a:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+<div class="login">
+    <div class="login-form">
+        <h2>Авторизация</h2>
+        <form method="post">
+            {% csrf_token %}
+            
+            
+            {{ form.username|add_class:"form-control"|attr:"placeholder:Email" }}
+            {{ form.password|add_class:"form-control"|attr:"placeholder:Пароль" }}
+            
+            <button type="submit" class="btn">Войти</button>
+        </form>
+        <div class="link-text">
+            Еще нет аккаунта? <a href="{% url 'main:reg' %}">Зарегистрируйтесь</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

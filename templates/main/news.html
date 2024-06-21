@@ -1,0 +1,68 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+{% block title %}
+Новости
+{% endblock %}
+
+{% block content %}
+
+
+<div class = "container">
+    <h2 class = "mt-5" > НОВОСТИ</h2>
+</div>
+
+
+
+<style>
+    .card-news {
+        transition: transform 0.2s;
+    }
+    .card-news:hover {
+        transform: scale(1.1);
+    }
+    .card-news-img-top {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    .card-news-text {
+        color: #333;
+    }
+    .card-news-footer {
+        background-color: transparent;
+        border-top: none;
+    }
+    .date {
+        color: #042750;
+        font-size: 0.9rem;
+    }
+    .more-info {
+        text-decoration: underline;
+        color: #042750;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row">
+        {% for news in news %}
+        <div class="col-lg-3 col-md-6 mb-3 ">
+            <div class="card-news">
+                <img src="{% if news.image %}{{ news.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" class="card-news-img-top" alt="{{ news.name }}">
+                <div class="card-news-body">
+                    <h5 class="card-news-title">{{news.name}}</h5>
+                    <p class="card-news-text">{{news.description}}</p>
+                </div>
+                <div class="card-news-footer">
+                    <small class="date">{{news.date}}</small>
+                    
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

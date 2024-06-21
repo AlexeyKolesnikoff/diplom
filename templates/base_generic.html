@@ -1,0 +1,165 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+    
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'main:index' %}"><img src="{% static 'img/logo.png' %}" style="width: 42px;"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'main:index' %}">Главная</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Сведения об образовательной организации
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="{% url 'main:contacts' %}">Контакты</a>
+                            <a class="dropdown-item" href="{% url 'main:managers' %}">Руководство</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'main:news' %}">Новости</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'main:trainers' %}">Тренеры</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Еще
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                            <a class="dropdown-item" href="{% url 'main:athlete' %}">Спортсмены</a>
+                            <a class="dropdown-item" href="{% url 'main:objects' %}">Объекты спорта</a>
+                            <a class="dropdown-item" href="{% url 'main:sports' %}">Виды спорта</a>
+                        </div>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="{% url 'main:profile' %}" class="nav-link">
+                            <i class="geo"></i> <img src="{% static 'img/user.png' %}" style = "width: 25px;"></i> <!-- Иконка личного кабинета -->
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <form method="post" action="{% url 'main:logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">Выйти</button>
+                        </form>
+                    </li>
+                    
+                    {% endif %}
+                    
+                    {% if not request.user.is_authenticated %}
+                    
+                    <form method="post" action = "{% url 'main:auth' %}" >
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">Войти</button>
+                    </form>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+{% block content %}{% endblock %}
+
+    </head>
+    <body>
+    
+      <footer class="footer mt-5" style = "background: #0a2a4a;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4" style = "box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1);">
+                    <div class="contact-info">
+                        <div class="card text-white border-0" style = "background: #0a2a4a;">
+                            <div class="card-body">
+                                <div class="logo text-center mb-3">
+                                    <a href = "{% url 'main:contacts' %}"><img src="{% static 'img/logo.png' %}" alt="Logo" class="img-fluid" style="max-height: 85px;"></a>
+                                </div>
+                                <h6 class="card-title1 text-center">«ГРЕБНОЙ КАНАЛ «ДОН»</h6>
+                                <p><i class="geo"></i> <img src="{% static 'img/geo.png' %}"> г. Ростов-на-Дону, ул. Пойменная 2А;</p>
+                                <p><i class="phone"></i> <img src="{% static 'img/phone.png' %}"> +7 (863) 240-50-65 Телефон приемной</p>
+                                <p><i class="mail"></i> <img src="{% static 'img/mail.png' %}"> <a href="mailto:rgk2003@yandex.ru" class="text-white">rgk2003@yandex.ru</a></p>
+                                <div class="social-icons text-center mt-3">
+                                    <a href="https://vk.com/grebnoykanal_don" class="text-white mx-2"><i><img src="{% static 'img/vk.png' %}" alt="vk"> </i></a>
+                                    <a href="https://t.me/grebnoi_official" class="text-white mx-2"><i><img src="{% static 'img/tg.png' %}" alt="tg"> </i></a>
+                                    <a href="https://ok.ru/group/70000003287692" class="text-white mx-2"><i><img src="{% static 'img/ok.png' %}" alt="ok"> </i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 d-flex align-items-center justify-content-center" style = "font-size: 18px; line-height: 2.5em; font-weight: bold;">
+                    <ul class="list-unstyled"  >
+                        <li><a href="{% url 'main:news' %}" class="text-white">Новости</a></li>
+                        <li><a href="{% url 'main:objects' %}" class="text-white">Объекты спорта</a></li>
+                        <li><a href="{% url 'main:contacts' %}" class="text-white">Контакты</a></li>
+                        <li><a href="{% url 'main:managers' %}" class="text-white">Руководство</a></li>
+                        
+                    </ul>
+                    <div class="social-icons text-center mt-3">
+                        <a href="#" class="text-white mx-2"><i> </i></a>
+                        
+                    </div>
+                </div>
+                <div class="col-md-4 d-flex align-items-center justify-content-center" style = "font-size: 18px; line-height: 2.5em; font-weight: bold;">
+                    <ul class="list-unstyled" >
+                        <li><a href="{% url 'main:trainers' %}" class="text-white">Тренеры</a></li>
+                        <li><a href="{% url 'main:athlete' %}" class="text-white">Спортсмены</a></li>
+                        <li><a href="{% url 'main:sports' %}" class="text-white">Виды спорта</a></li>
+                        
+                        
+                    </ul>
+                </div>
+                
+            </div>
+            <a href="#" class="text-white">
+                <div class="row mt-2">
+                    <div class="col text-center mb-1">
+                        <p class="text-white mb-0"> <a href="https://ufks-rostov.ru/news/" class="text-white">Управление по физической культуре и спорту <br>г.Ростов-на-Дону</a></p>
+                    </div>
+                </div>
+            <div class="row mt-2">
+                <div class="col text-center mb-1">
+                    <p class="text-white mb-0">© 2024, Все права защищены. <a href="{% static 'pdf/privacy_policy.pdf' %}" class="text-white">Политика конфиденциальности</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+   
+
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+{% block title %}
+Тренеры
+{% endblock %}
+
+{% block content %}
+
+<div class = "container">
+    <h2 class = "mt-5">ТРЕНЕРЫ</h2>
+</div>
+
+
+
+
+<style>
+    .card-trainers {
+        transition: transform 0.2s; /* Анимация на 0.2 секунды */
+    }
+    .card-trainers:hover {
+        transform: scale(1.02); /* Сдвиг вверх при наведении */
+    }
+    .card-trainers img {
+        height: 420px;
+        width: 100%;
+        object-fit: cover; /* Масштабирование изображения */
+    }
+    .card-trainers-body {
+        text-align: left; /* Текст по левой стороне */
+    }
+    .card-trainers-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    }
+    .card-trainers-text {
+       color: #333;
+    }
+</style>
+
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        {% for trainer in trainers %}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card-trainers h-100">
+                <img src="{% if trainer.image %}{{ trainer.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" class="card-trainers-img-top" alt="{{ trainer.name }}">
+                
+                <div class="card-trainers-body">
+                    <h5 class="card-trainers-title">{{trainer.name}}</h5>
+                    <p class="card-trainers-text">{{trainer.description}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        
+    </div>
+</div>
+{% endblock %}

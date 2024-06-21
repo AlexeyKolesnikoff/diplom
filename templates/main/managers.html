@@ -1,0 +1,111 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+{% block title %}
+Руководство
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class = "container">
+    <h2 class = "mt-5">РУКОВОДСТВО</h2>
+</div>
+
+
+
+
+<style>
+
+    
+
+    .card-man {
+        background: #fff;
+        border-radius: 8px;
+       
+        padding: 20px;
+        margin-bottom: 20px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card-man:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    }
+    .card-man img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px 8px 0 0;
+    }
+    .card-man-content {
+        padding: 0px;
+        text-align: center;
+    }
+    .card-man h2 {
+        color: #444;
+        margin-bottom: 10px;
+    }
+    .card-man p {
+        color: #555;
+        margin: 5px 0;
+        font-size: 16px;
+    }
+    .director-card-man {
+        margin-bottom: 40px;
+    }
+    .department-cards-man {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .department-card-man {
+        flex: 1;
+        min-width: 300px;
+        margin: 10px;
+    }
+    @media (max-width: 600px) {
+        .department-card-man {
+            min-width: 100%;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container " style = "max-width: 1200px; margin: 0 auto; padding: 20px;">
+
+
+<div class=" card-man director-card-man">
+    <img src="{% static 'img/dir.jpg' %}"  alt="Директор">
+    <div class="card-man-content">
+        <h2 style = "font-size: 30px;">Директор «Гребной канал «Дон»</h2>
+        <p style = "font-size: 20px;"> <strong>Гулаков Алексей Константинович</strong></p>
+        <p style = "font-size: 18px;"><strong>Телефон приемной:</strong> +7 (863) 240‒50‒65</p>
+    </div>
+</div>
+
+<div class="department-cards-man">
+    <div class="card-man department-card-man">
+        <div class="card-man-content">
+            <h2>Заместитель директора по учебно-спортивной работе</h2>
+            <p> Ефименко Татьяна Васильевна</p>
+            <p><strong>Телефон:</strong> +7 (863) 240-13-10</p>
+        </div>
+    </div>
+    <div class="card-man department-card-man">
+        <div class="card-man-content">
+            <h2>Заместитель директора по безопасности</h2>
+            <p> Зотов Андрей Александрович</p>
+            <p><strong>Телефон:</strong> +7 (863) 240-50-65</p>
+        </div>
+    </div>
+    <div class="card-man department-card-man">
+        <div class="card-man-content">
+            <h2>И.о. главного бухгалтера</h2>
+            <p> Малеева Людмила Олеговна</p>
+            <p><strong>Телефон:</strong> +7 (863) 285-54-71</p>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}

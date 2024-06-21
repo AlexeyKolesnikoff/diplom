@@ -1,0 +1,111 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %}
+Регистрация
+{% endblock %}
+
+{% block content %}
+<style>
+    .registration {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+    }
+
+    .registration-form {
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 15px; /* Отступ снизу для заголовка */
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px; 
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: #042750;
+    }
+
+    .btn {
+        background-color: #042750;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        display: block;
+        margin: 0 auto 20px auto; /* Центрирование кнопки и отступ снизу */
+    }
+
+    .btn:hover {
+        background-color: #034281;
+    }
+
+    .checkbox-label {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+        margin-right: 10px;
+        accent-color: #042750;
+    }
+
+    .link-text {
+        text-align: center;
+        font-size: 12px;
+        color: #042750;
+        margin-top: 10px; /* Отступ сверху для текста ссылки */
+    }
+
+    .link-text a {
+        color: #042750;
+        text-decoration: none;
+    }
+
+    .link-text a:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+<div class="registration">
+    <div class="registration-form">
+        <h2>Записаться в секцию</h2>
+        <form method="post">
+            {% csrf_token %}
+            
+            {{ contact_form.first_name|add_class:"form-control"|attr:"placeholder:Имя ребенка" }}
+            {{ contact_form.last_name|add_class:"form-control"|attr:"placeholder:Фамилия ребенка" }}
+            {{ contact_form.age|add_class:"form-control"|attr:"placeholder:Возраст" }}
+            {{ contact_form.sport|add_class:"form-control"|attr:"placeholder:Вид спорта" }}
+            {{ contact_form.phone|add_class:"form-control"|attr:"placeholder:Телефон" }}
+            {{ contact_form.email|add_class:"form-control"|attr:"placeholder:Email" }}
+            
+            
+            
+            <button type="submit" class="btn">Отправить</button>
+        </form>
+
+    </div>
+</div>
+{% endblock %}
